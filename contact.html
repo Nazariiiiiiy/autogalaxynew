@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title> Auto Galaxy </title>
+    <link rel="stylesheet" href="form.css">
+</head>
+<body>
+    <header>
+        <h1> Форма Замовлення </h1>
+        <nav>
+            <ul>
+                <li>
+                    <a href="golovna.html"> Головна </a> 
+                </li>
+                <li>
+                    <a href="catalog.html">Каталог</a>
+                </li>
+                <li>
+                    <a href="form.html"> Форма </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <form>
+        <label for="firstName"> Ім’я: </label>
+        <input type="text" id="firstName" name="firstName" required><br><br>
+        <label for="lastName"> Прізвище: </label>
+        <input type="text" id="lastName" name="lastName" required><br><br>
+        <label for="email"> Електронна пошта: </label>
+        <input type="email" id="email" name="email" required><br><br>
+        <h2>Ви вибрали:</h2>
+<ul id="carList"></ul>
+
+<script>
+// Отримуємо список авто з localStorage
+let cars = JSON.parse(localStorage.getItem('selectedCars')) || [];
+
+if (cars.length > 0) {
+  document.getElementById('carList').innerHTML =
+    cars.map(car => `<li>${car}</li>`).join('');
+} else {
+  document.getElementById('carList').innerHTML = '<li>Нічого не вибрано</li>';
+}
+</script>
+     <button type="submit">Підтвердити замовлення</button>
+        <button onclick="window.location.href='catalog.html'"> Повернутись до каталогу </button>
+    </form>
+</body>
+</html>
