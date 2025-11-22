@@ -9,9 +9,8 @@ body {
   background-color: rgb(113, 111, 111);
   color: rgb(252, 228, 228);
   line-height: 1.6;
-   overflow: hidden; 
-  height: 100vh; 
-
+  overflow: hidden;
+  height: 100vh;
 }
 
 header {
@@ -22,7 +21,6 @@ header {
   background-image: url('https://i.pinimg.com/736x/7c/09/4e/7c094efb3038d855ee3b1a2150e9f2b9.jpg');
   background-size: cover;
   background-position: center;
-  transform-origin: center;
   position: relative;
   overflow: hidden;
   box-shadow: 0 8px 25px rgba(255, 0, 0, 0.4);
@@ -48,7 +46,7 @@ header h1 {
 
 nav {
   font-family: 'Times New Roman', Times, serif;
-  margin-top: -130px; 
+  margin-top: -130px;
   position: relative;
   z-index: 10;
 }
@@ -57,7 +55,6 @@ nav ul {
   list-style: none;
   display: flex;
   gap: 30px;
-  position: relative;
   justify-content: center;
 }
 
@@ -83,7 +80,7 @@ nav a {
   border: none;
   cursor: pointer;
   border-radius: 6px;
-  box-shadow: 0 4px 10px rgba(255, 0, 0, 0.4); 
+  box-shadow: 0 4px 10px rgba(255, 0, 0, 0.4);
   transition: all 0.3s ease;
 }
 
@@ -94,23 +91,36 @@ nav a {
 }
 
 .dropdown {
-  position: relative; 
+  position: relative;
   display: inline-block;
   z-index: 1000;
 }
 
+/* ▼▼▼ Нове: плавна анімація випадаючого меню ▼▼▼ */
 .dropdown-content {
-  display: none;
+  display: block; 
   position: absolute;
   top: 100%;
-  left: 0; 
+  left: 0;
   background-color: #421212;
   min-width: 180px;
   border-radius: 6px;
   box-shadow: 0 8px 20px rgba(255, 0, 0, 0.4);
   overflow: hidden;
   z-index: 999;
+
+  opacity: 0;
+  transform: translateY(15px);
+  pointer-events: none;
+  transition: opacity 0.35s ease, transform 0.35s ease;
 }
+
+.dropdown:hover .dropdown-content {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+/* ▲▲▲ Кінець доданої анімації ▲▲▲ */
 
 .dropdown-content a {
   color: white;
@@ -124,54 +134,44 @@ nav a {
   background-color: #5c1717;
 }
 
-.dropdown.show .dropdown-content {
-  display: block;
-}
-
 body::before {
-  content: ""; 
-  top: 100px; 
+  content: "";
+  top: 100px;
   left: 0;
-  width: 100vw; 
-  height: calc(100vh - 100px); 
-  background-image: url('photo_2025-11-08_00-39-02.jpg'); 
-  background-size: cover; 
-  background-repeat: no-repeat; 
+  width: 100vw;
+  height: calc(100vh - 100px);
+  background-image: url('photo_2025-11-08_00-39-02.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
   background-position: center center;
   opacity: 0.8;
   z-index: -1;
   position: absolute;
 }
 
-main { 
-   text-align: left;
-  margin-left: 15%; 
+main {
+  text-align: left;
+  margin-left: 15%;
   margin-bottom: 20%;
-  font-family: 'Poppins', sans-serif;
-  color: #fff; 
-  line-height: 1.6; 
+  color: #fff;
 }
 
 main section {
-  width: 50%; 
-  margin-left: 0%; 
-   margin-top: 40px;
-  text-align: left; 
-  background: rgba(0, 0, 0, 0.4); 
+  width: 50%;
+  margin-top: 40px;
+  background: rgba(0, 0, 0, 0.4);
   padding: 40px;
-  border-radius: 20px; 
+  border-radius: 20px;
   box-shadow: 0 0 25px #ff000050;
-  backdrop-filter: blur(5px); 
+  backdrop-filter: blur(5px);
 }
 
 main section h2 {
   color: #ff2020;
-  text-shadow: 
+  text-shadow:
     0 0 10px #ff0000,
     0 0 20px #ff0000,
     0 0 40px #ff0000;
-  text-transform: uppercase;
-  letter-spacing: 2px;
   margin-bottom: 20px;
   animation: glow 2s ease-in-out infinite alternate;
 }
@@ -200,7 +200,7 @@ main section p {
   font-size: 20px;
   color: #ff4444;
   font-weight: 600;
-  text-shadow: 
+  text-shadow:
     0 0 10px #ff0000,
     0 0 20px #ff0000;
 }
@@ -219,29 +219,26 @@ main section p {
       0 0 60px #ff3b3b;
   }
 }
+
 footer {
-    background: rgba(0, 0, 0, 0.6); 
+  background: rgba(0, 0, 0, 0.6);
   color: #fff;
-  margin-bottom: -20px;
-  text-align: center; 
+  text-align: center;
   padding: 40px 0;
   border-top: 2px solid #ff0000;
-  box-shadow: 0 0 20px #ff000060; 
-  font-family: 'Poppins', sans-serif;
-  position: relative;
-  z-index: 5;
+  box-shadow: 0 0 20px #ff000060;
   position: fixed;
-  bottom: -20px; 
+  bottom: -20px;
   left: 0;
   width: 100%;
 }
+
 @media (max-width: 768px) {
   header {
     height: 160px;
   }
   header h1 {
     font-size: 32px;
-    text-align: center;
     margin: 0;
   }
   nav {
@@ -249,7 +246,6 @@ footer {
   }
   nav ul {
     flex-direction: column;
-    align-items: center;
     gap: 15px;
   }
   .dropbtn {
